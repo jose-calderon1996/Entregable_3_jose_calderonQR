@@ -10,7 +10,11 @@ const routes: Routes = [
     path: '',
     redirectTo: 'home',
     pathMatch: 'full'
+  },  {
+    path: 'cambio-pass',
+    loadChildren: () => import('./cambio-pass/cambio-pass.module').then( m => m.CambioPassPageModule)
   },
+
 ];
 
 @NgModule({
