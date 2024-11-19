@@ -22,6 +22,10 @@ const routes: Routes = [
     path: 'perfil',
     loadChildren: () => import('./perfil/perfil.module').then( m => m.PerfilPageModule)
   },
+  {
+    path: 'registro-estudiantil',
+    loadChildren: () => import('./registro-estudiantil/registro-estudiantil.module').then( m => m.RegistroEstudiantilPageModule)
+  },
 
 ];
 
