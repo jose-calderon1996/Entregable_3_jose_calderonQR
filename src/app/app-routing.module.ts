@@ -14,6 +14,10 @@ const routes: Routes = [
     path: 'cambio-pass',
     loadChildren: () => import('./cambio-pass/cambio-pass.module').then( m => m.CambioPassPageModule)
   },
+  {
+    path: 'login',
+    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
+  },
 
 ];
 
