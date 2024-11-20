@@ -30,3 +30,6 @@ describe('CambioPassPage', () => {
     expect(component).toBeTruthy();
   });
 });
+
+
+//xd
