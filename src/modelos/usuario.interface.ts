@@ -18,8 +18,6 @@ export interface PerfilEstudiante {
   fechaIngreso: string;
 }
 
-  
-// src/models/User.ts
 export interface User {
   nombre: string;
   comuna: string;
@@ -28,8 +26,6 @@ export interface User {
   carrera: string;
 }
 
-// src/models/RegistroUsuario.ts
-// src/models/RegistroUsuario.ts
 export interface RegistroUsuario {
   nombre: string;
   comuna: string;
