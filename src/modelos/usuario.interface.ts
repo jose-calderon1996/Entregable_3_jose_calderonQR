@@ -40,3 +40,10 @@ export interface RegistroUsuario {
   contrasena: string;
 }
 
+// contrasena 
+export interface Contrasena {
+  nueva: string;
+  confirmar: string;
+}
+
+
