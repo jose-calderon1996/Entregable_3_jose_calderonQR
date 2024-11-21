@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 // Firebase imports
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { environment } from '../environments/environment';
 
 @NgModule({
@@ -16,7 +17,8 @@ import { environment } from '../environments/environment';
     IonicModule.forRoot(),
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebaseConfig), // Inicializar Firebase
-    AngularFireAuthModule, // Inicializar Auth
+    AngularFireAuthModule, // Modulo de autenticación
+    AngularFirestoreModule, // Modulo de Firestore
   ],
   bootstrap: [AppComponent],
 })

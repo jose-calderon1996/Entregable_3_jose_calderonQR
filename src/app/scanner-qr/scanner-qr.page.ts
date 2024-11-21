@@ -1,11 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { BarcodeScanner } from 'capacitor-barcode-scanner';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { NavController } from '@ionic/angular';
 
 interface DatoAsignatura {
   seccion: string;
   fecha: string;
   estado: string;
+  code?: string;  // Agregar code como propiedad opcional
 }
 
 @Component({
@@ -13,30 +16,39 @@ interface DatoAsignatura {
   templateUrl: './scanner-qr.page.html',
   styleUrls: ['./scanner-qr.page.scss'],
 })
-export class ScannerQrPage {
+export class ScannerQrPage implements OnInit {
   mensaje: string = '';
   textoEscaneado: string = '';
 
-  // Datos para cada asignatura
+  // Definir propiedades para las asignaturas
   datosIngles: DatoAsignatura[] = [];
   datosProgramacion: DatoAsignatura[] = [];
   datosEstadistica: DatoAsignatura[] = [];
   datosCalidad: DatoAsignatura[] = [];
   datosArquitectura: DatoAsignatura[] = [];
 
-  constructor(private navCtrl: NavController) {}
+  constructor(
+    private firestore: AngularFirestore,
+    private auth: AngularFireAuth,
+    private navCtrl: NavController
+  ) {}
 
+  async ngOnInit() {
+    await this.cargarDatos();
+  }
+
+  // Método para escanear el código QR
   async escanear() {
     try {
-      const resultado = await BarcodeScanner.scan();
+      const resultado = await BarcodeScanner.scan();  // Escanear el QR
 
       if (resultado?.code) {
         this.textoEscaneado = resultado.code;
+        console.log('Texto escaneado:', this.textoEscaneado);  // Verifica el contenido del QR
         this.mensaje = 'Código escaneado correctamente.';
-        console.log('Texto escaneado:', this.textoEscaneado);
 
         // Procesar el texto escaneado
-        this.procesarDatos(this.textoEscaneado);
+        await this.procesarDatos(this.textoEscaneado);
       } else {
         this.mensaje = 'No se detectó contenido en el QR.';
       }
@@ -46,71 +58,141 @@ export class ScannerQrPage {
     }
   }
 
-  procesarDatos(texto: string) {
+  // Método para procesar los datos escaneados
+  async procesarDatos(texto: string) {
     try {
-      // Intentar convertir el texto escaneado en un JSON válido
-      const datos = JSON.parse(texto);
+      const datos = JSON.parse(texto);  // Convertir el texto en un objeto JSON
 
-      // Mostrar el JSON completo en consola en formato JSON
-      console.log('JSON escaneado:', JSON.stringify(datos, null, 2));
+      console.log('Datos procesados:', datos);  // Verifica los datos obtenidos
 
-      // Validar y asignar los datos según la sección
+      // Verifica que las claves necesarias estén presentes
+      if (!datos.seccion || !datos.fecha || !datos.code) {
+        this.mensaje = 'El QR escaneado no contiene datos válidos.';
+        console.error('Datos faltantes en el QR:', datos);
+        return;
+      }
+
+      // Obtener el usuario autenticado
+      const user = await this.auth.currentUser;
+      if (!user) {
+        this.mensaje = 'No hay un usuario autenticado.';
+        console.error('No se pudo obtener el usuario actual.');
+        return;
+      }
+
+      const userCollection = this.firestore.collection(`users/${user.uid}/qr-data`);
+
+      console.log('Datos enviados a Firestore:', datos);
+
+      // Agregar los datos a Firestore
+      await userCollection.add({
+        seccion: datos.seccion || 'Sin sección',
+        fecha: datos.fecha || new Date().toISOString(),
+        estado: 'Presente',
+        code: datos.code || 'Sin código',  // Agregar el "code" al documento
+      });
+
+      // Actualiza la lista local para mostrar los datos inmediatamente
       switch (datos.seccion) {
         case 'SD008':
           this.datosIngles.push({
-            seccion: datos.seccion,
-            fecha: datos.fecha || 'Sin fecha',
+            seccion: datos.seccion || 'Sin sección',
+            fecha: datos.fecha || new Date().toISOString(),
             estado: 'Presente',
+            code: datos.code || 'Sin código',
           });
-          this.mensaje = 'Datos agregados a Inglés Intermedio.';
           break;
-
         case '002v':
           this.datosProgramacion.push({
             seccion: datos.seccion || 'Sin sección',
-            fecha: datos.fecha || 'Sin fecha',
+            fecha: datos.fecha || new Date().toISOString(),
             estado: 'Presente',
+            code: datos.code || 'Sin código',
           });
-          this.mensaje = 'Datos agregados a Programación de Aplicaciones Móviles.';
           break;
-
         case '003v':
           this.datosEstadistica.push({
             seccion: datos.seccion || 'Sin sección',
-            fecha: datos.fecha || 'Sin fecha',
+            fecha: datos.fecha || new Date().toISOString(),
             estado: 'Presente',
+            code: datos.code || 'Sin código',
           });
-          this.mensaje = 'Datos agregados a Estadística Descriptiva.';
           break;
-
         case '004v':
           this.datosCalidad.push({
             seccion: datos.seccion || 'Sin sección',
-            fecha: datos.fecha || 'Sin fecha',
+            fecha: datos.fecha || new Date().toISOString(),
             estado: 'Presente',
+            code: datos.code || 'Sin código',
           });
-          this.mensaje = 'Datos agregados a Calidad del Software.';
           break;
-
         case '005v':
           this.datosArquitectura.push({
             seccion: datos.seccion || 'Sin sección',
-            fecha: datos.fecha || 'Sin fecha',
+            fecha: datos.fecha || new Date().toISOString(),
             estado: 'Presente',
+            code: datos.code || 'Sin código',
           });
-          this.mensaje = 'Datos agregados a Arquitectura.';
           break;
-
         default:
-          this.mensaje = 'El código no corresponde a ninguna asignatura.';
-          console.warn('Sección desconocida:', JSON.stringify(datos, null, 2));
-          break;
+          this.mensaje = 'El código escaneado no pertenece a ninguna asignatura.';
+          return;
       }
+
+      this.mensaje = `Datos agregados y guardados en Firestore: ${datos.seccion}`;
     } catch (error) {
       this.mensaje = 'El contenido escaneado no es un JSON válido.';
-      console.error('Error procesando el texto escaneado:', texto, error);
+      console.error('Error procesando los datos del QR:', error);
     }
   }
+
+  // Método para cargar los datos del usuario desde Firestore
+  async cargarDatos() {
+    try {
+      const user = await this.auth.currentUser;
+
+      if (user) {
+        const userCollection = this.firestore.collection<DatoAsignatura>(`users/${user.uid}/qr-data`);
+
+        // Escuchar cambios en la colección y asignarlos a las variables locales
+        userCollection.valueChanges().subscribe((datos: DatoAsignatura[]) => {
+          // Limpiar los arrays locales antes de llenarlos
+          this.datosIngles = [];
+          this.datosProgramacion = [];
+          this.datosEstadistica = [];
+          this.datosCalidad = [];
+          this.datosArquitectura = [];
+
+          // Clasificar los datos según la sección
+          datos.forEach((dato) => {
+            switch (dato.seccion) {
+              case 'SD008':
+                this.datosIngles.push(dato);
+                break;
+              case '002v':
+                this.datosProgramacion.push(dato);
+                break;
+              case '003v':
+                this.datosEstadistica.push(dato);
+                break;
+              case '004v':
+                this.datosCalidad.push(dato);
+                break;
+              case '005v':
+                this.datosArquitectura.push(dato);
+                break;
+            }
+          });
+        });
+      } else {
+        this.mensaje = 'No hay un usuario autenticado para cargar los datos.';
+        console.error('No se pudo obtener el usuario actual al cargar los datos.');
+      }
+    } catch (error) {
+      console.error('Error al cargar los datos desde Firestore:', error);
+    }
+  }
+
   navigateBack() {
     this.navCtrl.back();
   }

@@ -4,7 +4,8 @@
       <!-- Botón para regresar con diseño verde -->
       <ion-button 
         (click)="navigateBack()" 
-        style="--background: #28a745; --color: white; --border-radius: 8px;">
+        class="button-green"
+        aria-label="Volver al menú anterior">
         <ion-icon slot="icon-only" name="arrow-back-outline"></ion-icon>
       </ion-button>
     </ion-buttons>
@@ -13,78 +14,129 @@
 </ion-header>
 
 <ion-content class="ion-padding center-content">
+  <!-- Formulario de Registro -->
   <form (ngSubmit)="registrar()">
     <ion-grid>
+      <!-- Nombre -->
       <ion-row>
         <ion-col size="12">
           <ion-item>
             <ion-label position="floating">Nombre</ion-label>
-            <ion-input type="text" [(ngModel)]="datosUsuario.nombre" name="nombre" required></ion-input>
+            <ion-input 
+              type="text" 
+              [(ngModel)]="datosUsuario.nombre" 
+              name="nombre" 
+              required 
+              aria-label="Nombre completo">
+            </ion-input>
           </ion-item>
         </ion-col>
       </ion-row>
 
+      <!-- Correo -->
       <ion-row>
         <ion-col size="12">
           <ion-item>
             <ion-label position="floating">Correo</ion-label>
-            <ion-input type="email" [(ngModel)]="datosUsuario.correo" name="correo" required></ion-input>
+            <ion-input 
+              type="email" 
+              [(ngModel)]="datosUsuario.correo" 
+              name="correo" 
+              required 
+              aria-label="Correo electrónico">
+            </ion-input>
           </ion-item>
         </ion-col>
       </ion-row>
 
+      <!-- Comuna -->
       <ion-row>
         <ion-col size="12">
           <ion-item>
             <ion-label position="floating">Comuna</ion-label>
-            <ion-input type="text" [(ngModel)]="datosUsuario.comuna" name="comuna" required></ion-input>
+            <ion-input 
+              type="text" 
+              [(ngModel)]="datosUsuario.comuna" 
+              name="comuna" 
+              required 
+              aria-label="Comuna">
+            </ion-input>
           </ion-item>
         </ion-col>
       </ion-row>
 
+      <!-- Dirección -->
       <ion-row>
         <ion-col size="12">
           <ion-item>
             <ion-label position="floating">Dirección</ion-label>
-            <ion-input type="text" [(ngModel)]="datosUsuario.direccion" name="direccion" required></ion-input>
+            <ion-input 
+              type="text" 
+              [(ngModel)]="datosUsuario.direccion" 
+              name="direccion" 
+              required 
+              aria-label="Dirección">
+            </ion-input>
           </ion-item>
         </ion-col>
       </ion-row>
 
+      <!-- Fecha de Nacimiento -->
       <ion-row>
         <ion-col size="12">
           <ion-item>
             <ion-label position="floating">Fecha de Nacimiento</ion-label>
-            <ion-input type="date" [(ngModel)]="datosUsuario.fechaNacimiento" name="fechaNacimiento" required></ion-input>
+            <ion-input 
+              type="date" 
+              [(ngModel)]="datosUsuario.fechaNacimiento" 
+              name="fechaNacimiento" 
+              required 
+              aria-label="Fecha de nacimiento">
+            </ion-input>
           </ion-item>
         </ion-col>
       </ion-row>
 
+      <!-- Carrera -->
       <ion-row>
         <ion-col size="12">
           <ion-item>
             <ion-label position="floating">Carrera</ion-label>
-            <ion-input type="text" [(ngModel)]="datosUsuario.carrera" name="carrera" required></ion-input>
+            <ion-input 
+              type="text" 
+              [(ngModel)]="datosUsuario.carrera" 
+              name="carrera" 
+              required 
+              aria-label="Carrera">
+            </ion-input>
           </ion-item>
         </ion-col>
       </ion-row>
 
+      <!-- Contraseña -->
       <ion-row>
         <ion-col size="12">
           <ion-item>
             <ion-label position="floating">Contraseña</ion-label>
-            <ion-input type="password" [(ngModel)]="datosUsuario.contrasena" name="contrasena" required></ion-input>
+            <ion-input 
+              type="password" 
+              [(ngModel)]="datosUsuario.contrasena" 
+              name="contrasena" 
+              required 
+              aria-label="Contraseña">
+            </ion-input>
           </ion-item>
         </ion-col>
       </ion-row>
 
+      <!-- Botón de Registro -->
       <ion-row>
         <ion-col size="12">
-          <!-- Botón de Registrar con icono y estilo verde -->
           <ion-button 
             expand="block" 
             type="submit" 
-            style="--background: #28a745; --color: white; --border-radius: 8px;">
+            class="button-green" 
+            aria-label="Registrar usuario">
             <ion-icon slot="start" name="person-add-outline"></ion-icon>
             Registrar
           </ion-button>
@@ -93,7 +145,7 @@
     </ion-grid>
   </form>
 
-  <!-- Sección de texto adicional -->
+  <!-- Información adicional -->
   <div class="info-container">
     <h3 class="info-title">¿Por qué registrarse?</h3>
     <p class="info-text">
