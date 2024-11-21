@@ -1,0 +1,30 @@
+.button-green {
+    --background: #28a745; 
+    --color: white; 
+    
+    
+    border-radius: 8px;
+  }
+  
+  .accordion-green ion-item {
+    --border-color: #28a745; 
+    --color: #28a745; 
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+  }
+  
+  
+  
+  .accordion-green ion-item ion-label {
+    font-weight: bold; 
+  }
+  
+  .accordion-green div[slot="content"] {
+    
+    border: 1px solid #28a745;
+    border-radius: 8px;
+    padding: 10px;
+  }
+  
+ 
+  

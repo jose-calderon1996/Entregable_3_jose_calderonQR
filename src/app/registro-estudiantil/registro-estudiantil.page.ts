@@ -105,6 +105,9 @@ export class RegistroEstudiantilPage {
   navigateToLogin() {
     this.navCtrl.navigateBack('/login'); 
   }
+  navigateBack() {
+    this.navCtrl.back();
+  }
 }
 
 //jejejej 4 nov

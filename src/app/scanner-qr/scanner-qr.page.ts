@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { BarcodeScanner } from 'capacitor-barcode-scanner';
+import { NavController } from '@ionic/angular';
 
 interface DatoAsignatura {
   seccion: string;
@@ -23,7 +24,7 @@ export class ScannerQrPage {
   datosCalidad: DatoAsignatura[] = [];
   datosArquitectura: DatoAsignatura[] = [];
 
-  constructor() {}
+  constructor(private navCtrl: NavController) {}
 
   async escanear() {
     try {
@@ -109,5 +110,12 @@ export class ScannerQrPage {
       this.mensaje = 'El contenido escaneado no es un JSON válido.';
       console.error('Error procesando el texto escaneado:', texto, error);
     }
+  }
+  navigateBack() {
+    this.navCtrl.back();
+  }
+
+  navigateHome() {
+    this.navCtrl.navigateRoot('/home');
   }
 }

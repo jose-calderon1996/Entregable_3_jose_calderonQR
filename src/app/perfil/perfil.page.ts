@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { Router } from '@angular/router'; // Importa Router
 import { AuthService } from '../services/auth.service';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-perfil',
@@ -15,7 +16,7 @@ export class PerfilPage implements OnInit {
   fechaNacimiento: string = '';
   carrera: string = '';
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private authService: AuthService, private router: Router,private navCtrl: NavController) {}
 
   ngOnInit() {
     this.authService.getUserData().subscribe(
@@ -32,8 +33,8 @@ export class PerfilPage implements OnInit {
     );
   }
 
-  navegarEscaner() {
-    this.router.navigate(['/escaner']); // Redirige a la página del escáner
+  navigateQR() {
+    this.navCtrl.navigateForward('/scanner-qr');
   }
   async cerrarSesion() {
     try {
@@ -42,5 +43,12 @@ export class PerfilPage implements OnInit {
     } catch (error) {
       console.error('Error al cerrar sesión:', error);
     }
+  }
+  navigateBack() {
+    this.navCtrl.back();
+  }
+
+  navigateHome() {
+    this.navCtrl.navigateRoot('/home');
   }
 }

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -21,7 +22,8 @@ const routes: Routes = [
   },
   {
     path: 'perfil',
-    loadChildren: () => import('./perfil/perfil.module').then( m => m.PerfilPageModule)
+    loadChildren: () => import('./perfil/perfil.module').then( m => m.PerfilPageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'registro-estudiantil',
@@ -30,8 +32,10 @@ const routes: Routes = [
  
   {
     path: 'scanner-qr',
-    loadChildren: () => import('./scanner-qr/scanner-qr.module').then( m => m.ScannerQrPageModule)
-  },  {
+    loadChildren: () => import('./scanner-qr/scanner-qr.module').then( m => m.ScannerQrPageModule),
+    canActivate: [AuthGuard]
+  },
+  {
     path: 'restablecer-contrasena',
     loadChildren: () => import('./restablecer-contrasena/restablecer-contrasena.module').then( m => m.RestablecerContrasenaPageModule)
   },

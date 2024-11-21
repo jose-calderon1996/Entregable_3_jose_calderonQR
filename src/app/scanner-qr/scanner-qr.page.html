@@ -1,12 +1,24 @@
 <ion-header>
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <!-- Botón para regresar -->
+      <ion-button class="button-green" (click)="navigateBack()">
+        <ion-icon slot="icon-only" name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
     <ion-title>Escanear Código QR</ion-title>
+    <ion-buttons slot="end">
+      <!-- Botón para ir a Home -->
+      <ion-button class="button-green" (click)="navigateHome()">
+        <ion-icon slot="icon-only" name="home-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <!-- Botón para iniciar el escaneo -->
-  <ion-button expand="full" color="primary" (click)="escanear()">Escanear Código QR</ion-button>
+  <ion-button expand="full" class="button-green" (click)="escanear()">Escanear Código QR</ion-button>
 
   <!-- Mensaje para el usuario -->
   <ion-card *ngIf="mensaje">
@@ -17,8 +29,8 @@
 
   <!-- Grupo de acordeones para asignaturas -->
   <ion-accordion-group>
-    <!-- Acordeón de Inglés Intermedio -->
-    <ion-accordion>
+    <!-- Inglés Intermedio -->
+    <ion-accordion class="accordion-green">
       <ion-item slot="header">
         <ion-label>Inglés Intermedio</ion-label>
       </ion-item>
@@ -35,8 +47,8 @@
       </div>
     </ion-accordion>
 
-    <!-- Repite para las demás asignaturas -->
-    <ion-accordion>
+    <!-- Programación de Aplicaciones Móviles -->
+    <ion-accordion class="accordion-green">
       <ion-item slot="header">
         <ion-label>Programación de Aplicaciones Móviles</ion-label>
       </ion-item>
@@ -54,7 +66,7 @@
     </ion-accordion>
 
     <!-- Estadística Descriptiva -->
-    <ion-accordion>
+    <ion-accordion class="accordion-green">
       <ion-item slot="header">
         <ion-label>Estadística Descriptiva</ion-label>
       </ion-item>
@@ -72,7 +84,7 @@
     </ion-accordion>
 
     <!-- Calidad del Software -->
-    <ion-accordion>
+    <ion-accordion class="accordion-green">
       <ion-item slot="header">
         <ion-label>Calidad del Software</ion-label>
       </ion-item>
@@ -90,7 +102,7 @@
     </ion-accordion>
 
     <!-- Arquitectura -->
-    <ion-accordion>
+    <ion-accordion class="accordion-green">
       <ion-item slot="header">
         <ion-label>Arquitectura</ion-label>
       </ion-item>

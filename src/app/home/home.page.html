@@ -1,18 +1,23 @@
 <div class="ion-page" id="main-content">
   <ion-header>
     <ion-toolbar>
-      <ion-buttons slot="start">
-        <ion-menu-button color="success"></ion-menu-button>
-      </ion-buttons>
-      <ion-title color="success" class="ion-text-center">Presente!</ion-title>
+      <ion-title class="ion-text-center">Presente!</ion-title>
       <ion-buttons slot="end">
-        <ion-button (click)="navigateToLogin()" color="success">Login</ion-button>
+        <!-- Botón de Login -->
+        <ion-button (click)="navigateToLogin()" class="button-green">
+          <ion-icon slot="start" name="log-in-outline"></ion-icon>
+          Login
+        </ion-button>
       </ion-buttons>
     </ion-toolbar>
   </ion-header>
 
   <ion-content class="ion-padding center-content">
-    <img src="https://img.freepik.com/vector-gratis/asistencia-papel-lista-comprobacion-dibujos-animados-icono-vectorial-ilustracion-educacion-negocio-aislado-plano_138676-10698.jpg" alt="Asistencia" style="width: 100%; height: auto; margin-bottom: 20px;" />
+    <img
+      src="https://img.freepik.com/vector-gratis/asistencia-papel-lista-comprobacion-dibujos-animados-icono-vectorial-ilustracion-educacion-negocio-aislado-plano_138676-10698.jpg"
+      alt="Asistencia"
+      style="width: 100%; height: auto; margin-bottom: 20px;"
+    />
 
     <ion-card>
       <p class="ion-text-center">
@@ -23,11 +28,26 @@
       <h3 class="ion-text-center">¿Aún no tienes cuenta de estudiante?</h3>
     </ion-card>
 
-    <ion-button (click)="navegarRegistro()" fill="outline" color="success" expand="block" class="ion-text-center">
-      Regístrate aquí
-    </ion-button>
-    <ion-button (click)="navigateperfil()" fill="outline" color="success" expand="block" class="ion-text-center">
-      Mi perfil
-    </ion-button>
+    <!-- Botones de navegación con iconos y mayor separación -->
+    <div class="button-container">
+      <ion-button (click)="navegarRegistro()" expand="block" class="button-green">
+        <ion-icon slot="start" name="person-add-outline"></ion-icon>
+        Regístrate aquí
+      </ion-button>
+    </div>
+
+    <div class="button-container">
+      <ion-button (click)="navigateperfil()" expand="block" class="button-green">
+        <ion-icon slot="start" name="person-circle-outline"></ion-icon>
+        Mi perfil
+      </ion-button>
+    </div>
+
+    <div class="button-container">
+      <ion-button (click)="navigateQR()" expand="block" class="button-green">
+        <ion-icon slot="start" name="qr-code-outline"></ion-icon>
+        Registra aquí tu asistencia
+      </ion-button>
+    </div>
   </ion-content>
 </div>
