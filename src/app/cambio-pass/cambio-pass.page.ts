@@ -70,3 +70,4 @@ export class CambioPassPage {
     this.navCtrl.navigateBack('/perfil-estudiante');
   }
 }
+//xd
