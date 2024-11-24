@@ -94,7 +94,7 @@ export class ScannerQrPage implements OnInit {
 
       // Actualiza la lista local para mostrar los datos inmediatamente
       switch (datos.seccion) {
-        case 'SD008':
+        case '001v':
           this.datosIngles.push({
             seccion: datos.seccion || 'Sin sección',
             fecha: datos.fecha || new Date().toISOString(),
@@ -166,7 +166,7 @@ export class ScannerQrPage implements OnInit {
           // Clasificar los datos según la sección
           datos.forEach((dato) => {
             switch (dato.seccion) {
-              case 'SD008':
+              case '001v':
                 this.datosIngles.push(dato);
                 break;
               case '002v':
