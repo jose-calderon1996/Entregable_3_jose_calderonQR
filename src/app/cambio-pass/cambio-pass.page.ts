@@ -69,5 +69,8 @@ export class CambioPassPage {
   navegarPerfil() {
     this.navCtrl.navigateBack('/perfil-estudiante');
   }
+  navigateBack() {
+    this.navCtrl.back();
+  }
 }
 //xd

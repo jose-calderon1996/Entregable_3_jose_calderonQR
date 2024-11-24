@@ -51,4 +51,6 @@ export class PerfilPage implements OnInit {
   navigateHome() {
     this.navCtrl.navigateRoot('/home');
   }
+  
+  
 }

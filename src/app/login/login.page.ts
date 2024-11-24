@@ -1,6 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { AlertController, LoadingController, NavController } from '@ionic/angular';
 import { AuthService } from '../services/auth.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -20,7 +21,7 @@ export class LoginPage implements OnInit {
   private authService = inject(AuthService);
   
 
-  constructor() { }
+  constructor(private router: Router) { }
   async validadInnicio() {
     try {
       await this.authService.login(this.email, this.password);
@@ -58,6 +59,12 @@ export class LoginPage implements OnInit {
  
   vistaPass() {
     this.navCtrl.navigateForward('/cambio-pass'); // Navega a la página de cambio de contraseña
+  }
+  navigateBack() {
+    this.navCtrl.back();
+  }
+  reseteoPass() {
+    this.router.navigate(['/restablecer-contrasena']);
   }
 
   ngOnInit() { }

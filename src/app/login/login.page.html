@@ -2,20 +2,27 @@
   <ion-header>
     <ion-toolbar>
       <ion-buttons slot="start">
-        <ion-back-button defaultHref="/home" color="success" icon-only="true"></ion-back-button>
+        <!-- Botón de retroceso -->
+        <ion-button class="button-green" (click)="navigateBack()">
+          <ion-icon slot="start" name="arrow-back"></ion-icon>
+        </ion-button>
       </ion-buttons>
       <ion-title color="success" class="ion-text-center">Login</ion-title>
     </ion-toolbar>
   </ion-header>
 
   <ion-content class="ion-padding center-content">
-    <img src="https://i.pinimg.com/736x/3f/5a/d8/3f5ad816179850d23695910e906554a7.jpg" alt="Login" style="width: 100%; height: auto; margin-bottom: 20px;" />
+    <img
+      src="https://i.pinimg.com/736x/3f/5a/d8/3f5ad816179850d23695910e906554a7.jpg"
+      alt="Login"
+      style="width: 100%; height: auto; margin-bottom: 20px;"
+    />
 
     <ion-item>
       <ion-label color="success" position="floating">Correo</ion-label>
       <ion-input type="email" [(ngModel)]="email"></ion-input>
     </ion-item>
-    
+
     <ion-item>
       <ion-label color="success" position="floating">Password</ion-label>
       <ion-input type="password" [(ngModel)]="password">
@@ -23,11 +30,22 @@
       </ion-input>
     </ion-item>
 
-    <ion-button fill="outline" (click)="validadInnicio()" color="success" expand="block">
+    <!-- Botón con ícono para Iniciar sesión -->
+    <ion-button class="button-green" (click)="validadInnicio()" expand="block">
+      <ion-icon slot="start" name="lock-closed"></ion-icon>
       Iniciar sesión
     </ion-button>
-    <ion-button color="success" (click)="vistaPass()" fill="clear">
-      ¿Cambiar contraseña?
-    </ion-button>
+
+    <!-- Nuevos diseños para los botones de Restablecer y Recuperar contraseña -->
+    <div class="link-container">
+      <ion-button class="secondary-link" (click)="vistaPass()" fill="clear">
+        <ion-icon slot="start" name="refresh-circle"></ion-icon>
+        <span class="green-text">¿Quieres cambiar tu contraseña?</span>
+      </ion-button>
+      <ion-button class="secondary-link" (click)="reseteoPass()" fill="clear">
+        <ion-icon slot="start" name="mail"></ion-icon>
+        <span class="green-text">Recuperar contraseña vía correo</span>
+      </ion-button>
+    </div>
   </ion-content>
 </ion-content>

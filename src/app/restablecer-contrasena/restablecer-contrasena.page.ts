@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AlertController } from '@ionic/angular';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-restablecer-contrasena',
@@ -10,7 +11,7 @@ import { AlertController } from '@ionic/angular';
 export class RestablecerContrasenaPage {
   email: string = ''; // Correo electrónico ingresado por el usuario
 
-  constructor(private afAuth: AngularFireAuth, private alertController: AlertController) {}
+  constructor(private afAuth: AngularFireAuth, private alertController: AlertController,private navCtrl: NavController) {}
 
   async enviarEnlace() {
     if (!this.email || !this.email.includes('@')) {
@@ -46,5 +47,8 @@ export class RestablecerContrasenaPage {
       buttons: ['Aceptar'],
     });
     await alert.present();
+  }
+  navigateBack() {
+    this.navCtrl.back();
   }
 }

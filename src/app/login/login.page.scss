@@ -1,0 +1,43 @@
+.button-green {
+    --background: #28a745; /* Fondo verde */
+    --color: white; /* Texto blanco */
+    border: none; /* Sin borde */
+    border-radius: 8px; /* Bordes redondeados */
+    display: flex;
+    align-items: center;
+    gap: 5px; /* Espacio entre el icono y el texto */
+  }
+/* Contenedor para los enlaces */
+.link-container {
+    margin-top: 20px; /* Espaciado superior */
+    display: flex;
+    flex-direction: column; /* Alinea verticalmente los botones */
+    align-items: center; /* Centra horizontalmente */
+  }
+  
+  /* Botones secundarios (restablecer y recuperar) */
+  .secondary-link {
+    --background: transparent; /* Fondo transparente */
+    font-size: 14px; /* Tamaño de fuente */
+    font-weight: bold; /* Texto en negrita */
+    text-decoration: none; /* Sin subrayado */
+    padding: 10px 15px; /* Espaciado interno */
+    border-radius: 20px; /* Bordes redondeados */
+    transition: color 0.3s ease, transform 0.2s ease; /* Transiciones */
+  }
+  
+  /* Texto verde para los botones */
+  .green-text {
+    color: #28a745; /* Verde */
+    transition: color 0.3s ease; /* Transición en color */
+  }
+  
+  /* Efecto hover para los botones secundarios */
+  .secondary-link:hover .green-text {
+    color: #155724; /* Verde más oscuro */
+  }
+  
+  .secondary-link:hover {
+    transform: scale(1.05); /* Ligero aumento de tamaño */
+  }
+  

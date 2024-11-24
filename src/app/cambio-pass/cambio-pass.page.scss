@@ -1,0 +1,31 @@
+/* Estilo para el botón verde */
+.button-green {
+    --background: #28a745; /* Fondo verde */
+    --color: white; /* Texto blanco */
+    border-radius: 8px; /* Bordes redondeados */
+    padding: 10px; /* Espaciado interno */
+    font-size: 16px; /* Tamaño de fuente */
+  }
+  
+  /* Centrar contenido */
+  .center-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Estilo del título */
+  ion-title {
+    font-weight: bold; /* Título en negrita */
+    font-size: 20px; /* Tamaño de fuente más grande */
+  }
+  
+  /* Estilo para el texto explicativo */
+  .info-text {
+    margin: 20px 0; /* Espaciado superior e inferior */
+    text-align: center; /* Centrado del texto */
+    font-size: 14px; /* Tamaño de fuente */
+    color: #6c757d; /* Color gris */
+  }
+  
