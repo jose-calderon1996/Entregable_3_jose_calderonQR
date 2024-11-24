@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { PerfilPage } from './perfil.page';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { environment } from '../../environments/environment'; // Asegúrate de que la ruta sea correcta.
+import { environment } from '../../environments/environment'; 
 
 describe('PerfilPage', () => {
   let component: PerfilPage;
@@ -12,10 +12,10 @@ describe('PerfilPage', () => {
     await TestBed.configureTestingModule({
       declarations: [PerfilPage],
       imports: [
-        AngularFireModule.initializeApp(environment.firebaseConfig) // Configuración de Firebase
+        AngularFireModule.initializeApp(environment.firebaseConfig) 
       ],
       providers: [
-        { provide: AngularFireAuth, useValue: {} } // Mock del servicio AngularFireAuth
+        { provide: AngularFireAuth, useValue: {} } 
       ]
     }).compileComponents();
 

@@ -9,7 +9,7 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
   styleUrls: ['./home.page.scss'],
 })
 export class HomePage implements OnInit {
-  isLoggedIn: boolean = false; // Estado para alternar los botones
+  isLoggedIn: boolean = false; 
 
   constructor(
     private navCtrl: NavController,

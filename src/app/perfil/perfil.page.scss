@@ -1,22 +1,22 @@
 .button-green {
-    --background: #28a745; /* Fondo verde */
-    --color: white; /* Texto blanco */
-    border: none; /* Sin borde */
-    border-radius: 8px; /* Bordes redondeados */
+    --background: #28a745; 
+    --color: white; 
+    border: none; 
+    border-radius: 8px; 
     display: flex;
     align-items: center;
-    gap: 5px; /* Espacio entre el icono y el texto */
+    gap: 5px; 
   }
   
   .button-logout {
-    --background: #dc3545; /* Fondo rojo */
-    --color: white; /* Texto blanco */
-    border: none; /* Sin borde */
-    border-radius: 8px; /* Bordes redondeados */
-    padding: 0 16px; /* Espaciado interior */
+    --background: #dc3545; 
+    --color: white;
+    border: none; 
+    border-radius: 8px; 
+    padding: 0 16px;
     display: flex;
     align-items: center;
-    gap: 5px; /* Espacio entre el icono y el texto */
-    font-size: 14px; /* Tamaño de texto */
+    gap: 5px; 
+    font-size: 14px; 
   }
   

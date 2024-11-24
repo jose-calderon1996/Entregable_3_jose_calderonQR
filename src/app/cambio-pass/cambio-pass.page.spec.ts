@@ -14,10 +14,10 @@ describe('CambioPassPage', () => {
       declarations: [CambioPassPage],
       imports: [
         IonicModule.forRoot(),
-        AngularFireModule.initializeApp(environment.firebaseConfig) // Configuración mínima de Firebase
+        AngularFireModule.initializeApp(environment.firebaseConfig) 
       ],
       providers: [
-        AngularFireAuth // Proveedor directo sin configuración adicional
+        AngularFireAuth 
       ],
     }).compileComponents();
 

@@ -4,7 +4,7 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { environment } from '../../environments/environment';
 
-// Mock del servicio AngularFireAuth
+
 const mockAngularFireAuth = {
   signInWithEmailAndPassword: jasmine.createSpy('signInWithEmailAndPassword'),
   currentUser: jasmine.createSpy('currentUser').and.returnValue(Promise.resolve({ uid: 'test-uid' }))
@@ -18,10 +18,10 @@ describe('LoginPage', () => {
     await TestBed.configureTestingModule({
       declarations: [LoginPage],
       imports: [
-        AngularFireModule.initializeApp(environment.firebaseConfig) // Configuración de Firebase
+        AngularFireModule.initializeApp(environment.firebaseConfig) 
       ],
       providers: [
-        { provide: AngularFireAuth, useValue: mockAngularFireAuth } // Mock de AngularFireAuth
+        { provide: AngularFireAuth, useValue: mockAngularFireAuth } 
       ]
     }).compileComponents();
 

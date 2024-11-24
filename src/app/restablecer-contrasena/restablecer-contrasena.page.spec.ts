@@ -11,8 +11,8 @@ describe('RestablecerContrasenaPage', () => {
     await TestBed.configureTestingModule({
       declarations: [RestablecerContrasenaPage],
       providers: [
-        { provide: AngularFireAuth, useValue: {} }, // Mock básico para AngularFireAuth
-        { provide: FIREBASE_OPTIONS, useValue: {} }, // Mock básico para FIREBASE_OPTIONS
+        { provide: AngularFireAuth, useValue: {} }, 
+        { provide: FIREBASE_OPTIONS, useValue: {} }, 
       ],
     }).compileComponents();
 

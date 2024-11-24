@@ -3,7 +3,7 @@ import { IonicModule } from '@ionic/angular';
 import { ScannerQrPage } from './scanner-qr.page';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { environment } from '../../environments/environment'; // Asegúrate de que la ruta sea correcta.
+import { environment } from '../../environments/environment'; 
 
 describe('ScannerQrPage', () => {
   let component: ScannerQrPage;
@@ -14,10 +14,10 @@ describe('ScannerQrPage', () => {
       declarations: [ScannerQrPage],
       imports: [
         IonicModule.forRoot(),
-        AngularFireModule.initializeApp(environment.firebaseConfig) // Configuración de Firebase
+        AngularFireModule.initializeApp(environment.firebaseConfig) 
       ],
       providers: [
-        { provide: AngularFireAuth, useValue: {} } // Mock del servicio AngularFireAuth
+        { provide: AngularFireAuth, useValue: {} } 
       ]
     }).compileComponents();
 

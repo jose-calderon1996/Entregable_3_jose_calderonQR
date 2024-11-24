@@ -38,8 +38,8 @@ export class PerfilPage implements OnInit {
   }
   async cerrarSesion() {
     try {
-      await this.authService.logout(); // Llama al método de logout
-      this.router.navigate(['/home']); // Redirige al usuario a la página de home
+      await this.authService.logout(); 
+      this.router.navigate(['/home']);
     } catch (error) {
       console.error('Error al cerrar sesión:', error);
     }

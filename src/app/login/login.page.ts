@@ -12,12 +12,12 @@ import { Router } from '@angular/router';
 export class LoginPage implements OnInit {
   private loadingController = inject(LoadingController);
   private alertas = inject(AlertController);
-  private navCtrl = inject(NavController); // Agrega el NavController para la navegación
+  private navCtrl = inject(NavController); 
 
   // Variables locales para capturar con ngModel
   email: string = "";
   password: string = "";
-  color: string = 'primary'; // o el color que prefieras (e.g., 'secondary', 'danger', etc.)
+  color: string = 'primary';
   private authService = inject(AuthService);
   
 
@@ -25,10 +25,10 @@ export class LoginPage implements OnInit {
   async validadInnicio() {
     try {
       await this.authService.login(this.email, this.password);
-      this.navCtrl.navigateForward('/home');  // Navega a la página de inicio
+      this.navCtrl.navigateForward('/home');  
     } catch (error) {
       console.error('Error de inicio de sesión:', error);
-      // Puedes agregar una alerta o mensaje de error aquí
+      
     }
   }
 
@@ -46,7 +46,7 @@ export class LoginPage implements OnInit {
     // Crea el loading con un mensaje
     const loading = await this.loadingController.create({
       message: 'Iniciando sesión...',
-      duration: 3000 // Duración de la animación de carga: 3 segundos
+      duration: 3000 
     });
 
     await loading.present();
@@ -56,9 +56,9 @@ export class LoginPage implements OnInit {
     this.navCtrl.navigateForward('/perfil-estudiante');
   }
 
- 
+  // navegaciones
   vistaPass() {
-    this.navCtrl.navigateForward('/cambio-pass'); // Navega a la página de cambio de contraseña
+    this.navCtrl.navigateForward('/cambio-pass'); 
   }
   navigateBack() {
     this.navCtrl.back();

@@ -2,12 +2,12 @@
   <ion-toolbar>
     <ion-title class="ion-text-center">Presente!</ion-title>
     <ion-buttons slot="end">
-      <!-- Botón de Login (visible si no está logueado) -->
+      
       <ion-button *ngIf="!isLoggedIn" (click)="navigateToLogin()" class="button-green">
         <ion-icon slot="start" name="log-in-outline"></ion-icon>
         Login
       </ion-button>
-      <!-- Botón de Cerrar Sesión (visible si está logueado) -->
+      
       <ion-button *ngIf="isLoggedIn" (click)="cerrarSesion()" class="button-red">
         <ion-icon slot="start" name="log-out-outline"></ion-icon>
         Cerrar Sesión
@@ -32,7 +32,7 @@
     <h3 class="ion-text-center">¿Aún no tienes cuenta de estudiante?</h3>
   </ion-card>
 
-  <!-- Botones de navegación con iconos y mayor separación -->
+  
   <div class="button-container">
     <ion-button (click)="navegarRegistro()" expand="block" class="button-green">
       <ion-icon slot="start" name="person-add-outline"></ion-icon>

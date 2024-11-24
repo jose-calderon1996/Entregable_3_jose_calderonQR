@@ -65,7 +65,7 @@ export class CambioPassPage {
       await toast.present();
     }
   }
-
+  // navegaciones
   navegarPerfil() {
     this.navCtrl.navigateBack('/perfil-estudiante');
   }

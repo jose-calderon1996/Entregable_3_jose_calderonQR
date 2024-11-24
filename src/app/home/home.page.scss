@@ -1,13 +1,13 @@
 .button-green {
-  --background: #28a745; /* Fondo verde */
-  --color: white; /* Texto blanco */
-  border: none; /* Sin borde */
-  border-radius: 8px; /* Bordes redondeados */
+  --background: #28a745; 
+  --color: white; 
+  border: none; 
+  border-radius: 8px; 
   display: flex;
   align-items: center;
-  gap: 5px; /* Espacio entre el icono y el texto */
+  gap: 5px; 
 }
 
 .button-container {
-  margin-bottom: 20px; /* Separación entre los botones */
+  margin-bottom: 20px; 
 }

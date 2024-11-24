@@ -63,7 +63,7 @@ export class ScannerQrPage implements OnInit {
     try {
       const datos = JSON.parse(texto);  // Convertir el texto en un objeto JSON
 
-      console.log('Datos procesados:', datos);  // Verifica los datos obtenidos
+      
 
       // Verifica que las claves necesarias estén presentes
       if (!datos.seccion || !datos.fecha || !datos.code) {
@@ -139,7 +139,7 @@ export class ScannerQrPage implements OnInit {
           return;
       }
 
-      this.mensaje = `Datos agregados y guardados en Firestore: ${datos.seccion}`;
+      this.mensaje = `Datos agregados y guardados `;
     } catch (error) {
       this.mensaje = 'El contenido escaneado no es un JSON válido.';
       console.error('Error procesando los datos del QR:', error);
