@@ -21,11 +21,10 @@ export class HomePage implements OnInit {
     this.checkAuthenticationStatus(); // Escuchar los cambios de autenticación al cargar la página
   }
 
-  // Método para verificar si el usuario está autenticado para luego cambiar estado de boton de login a cerar sesion
+  // Método para verificar si el usuario está autenticado para luego cambiar estado de boton de login a cerrar sesión
   checkAuthenticationStatus() {
-    this.afAuth.onAuthStateChanged((user) => {
+    this.afAuth.authState.subscribe((user) => {
       this.isLoggedIn = !!user; // Si hay un usuario, isLoggedIn es true; si no, false
-      
     });
   }
 
