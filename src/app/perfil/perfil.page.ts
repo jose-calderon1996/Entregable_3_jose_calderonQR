@@ -51,6 +51,9 @@ export class PerfilPage implements OnInit {
   navigateHome() {
     this.navCtrl.navigateRoot('/home');
   }
+  vistaPass() {
+    this.navCtrl.navigateForward('/cambio-pass'); 
+  }
   
   
 }

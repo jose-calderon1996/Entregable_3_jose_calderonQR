@@ -19,4 +19,29 @@
     gap: 5px; 
     font-size: 14px; 
   }
+  .secondary-link {
+    --background: transparent;
+    font-size: 14px; 
+    font-weight: bold; 
+    text-decoration: none; 
+    padding: 10px 15px; 
+    border-radius: 20px; 
+    transition: color 0.3s ease, transform 0.2s ease;
+  }
+  
+
+  .green-text {
+    color: #28a745; 
+    transition: color 0.3s ease; 
+  }
+  
+ 
+  .secondary-link:hover .green-text {
+    color: #155724; 
+  }
+  
+  .secondary-link:hover {
+    transform: scale(1.05); 
+  }
+  
   
